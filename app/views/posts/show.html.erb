@@ -1,2 +1,30 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+
+<div>
+  <h1><%=@post.id%>번째 글</h1>
+  <p> <%=@post.title%> </p>
+  <p> <%=@post.content%> </p>
+  <a href ="/">홈</a>
+  <a href ="/posts/<%=@post.id%>/edit">수정하기</a>
+  <a href ="/posts/<%=@post.id%>" data-method="delete" data-confirm="real?">삭제하기</a>
+</div>
+
+<div>
+  <table>
+    <tr>
+      <th>댓글</th>
+    </tr>
+    <% @comments.each do |comment|%>
+      <tr>
+        <td><%= comment.content %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<div>
+  <form action="posts/<%=@post.id%>/comments" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <textarea name="content" rows="8" cols="80"></textarea>
+    <input type="submit" name="" value="댓글등록">
+  </form>
+</div>

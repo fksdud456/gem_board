@@ -1,2 +1,18 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<a href="/posts/new">글 작성하기</a>
+<table>
+<tr>
+  <th>ID</th>
+  <th>제목</th>
+  <th>내용</th>
+</tr>
+  <% @posts.each do |post|%>
+  <tr>
+    <td><%= post.id %></td>
+    <td><%= post.title %></td>
+    <td><%= post.content %></td>
+    <td><a href="/posts/<%=post.id%>">보기</a></td>
+    <td><a href="/posts/<%=post.id%>/edit">수정</a></td>
+    <td><a href ="/posts/<%=post.id%>" data-method="delete" data-confirm="정말 삭제하실?">삭제하기</a></td>
+  </tr>
+  <% end %>
+</table>

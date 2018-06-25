@@ -1,21 +1,27 @@
 Rails.application.routes.draw do
-  get 'comments/new'
+  root 'posts#index'
 
-  get 'comments/create'
+  get 'comments/:id/new'=>'comments#new'
 
-  get 'posts/index'
+  post 'posts/:post_id/comments' => 'comments#create'
 
-  get 'posts/new'
+  resources :posts
 
-  get 'posts/create'
+  # # routes.rb
+  # # index
+  # get 'posts' => 'posts#index'
+  #
+  # # CRUD -C
+  # get 'posts/new' => 'posts#new'
+  # post 'posts' => 'posts#create'
+  # # CRUD -R
+  # get 'posts/:id' => 'posts#show'
+  # # CRUD -U
+  # get 'posts/:id/edit' => 'posts#edit'
+  # put 'posts/:id' => 'posts#update'
+  # # CRUD -D
+  # destroy 'posts/:id' => 'posts#destroy'
 
-  get 'posts/show'
-
-  get 'posts/edit'
-
-  get 'posts/update'
-
-  get 'posts/destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
